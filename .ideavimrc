@@ -1,0 +1,75 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+let mapleader=" "
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+set rnu
+"set windownavigation
+set clipboard=unnamed  " use the clipboards of vim and win
+set clipboard+=ideaput
+set paste               " Paste from a windows or from vim
+set go+=a               " Visual selection automatically copied to the clipboard
+
+set ideajoin
+" Do incremental searching.
+set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+Plug 'tpope/vim-commentary'
+"https://github.com/AlexPl292/IdeaVim-EasyMotion#supported-commands 命令map
+Plug 'easymotion/vim-easymotion'
+"https://github.com/tpope/vim-surround/blob/master/doc/surround.txt
+Plug 'tpope/vim-surround'
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+"map <leader>= <Action>(ReformatCode)
+nnoremap <leader>=  <Action>(ReformatCode)
+
+
+"我自己的操作，是下面，将<leader>r 绑定到运行run上"
+map <leader>r <Action>(Run)
+
+"" Map <leader>d to start debug
+map <leader>d <Action>(Debug)
+
+map <leader>c <Action>(Stop)
+
+map <leader>ss <Action>(StepOver)
+
+map <leader>si <Action>(StepInto)
+
+map <leader>so <Action>(StepOut)
+
+"" Map \b to toggle the breakpoint on the current line
+map <leader>b <Action>(ToggleLineBreakpoint)
+
+map <leader>n <Action>(GotoNextError)
+
+map <a-l> gt
+map <a-h> gT
+
+" 将 'jk' 或 'kj' 快速输入映射为 Esc
+inoremap jk <Esc>
+inoremap kj <Esc>
+
+" 将 Ctrl+H 映射为左箭头键
+
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+
