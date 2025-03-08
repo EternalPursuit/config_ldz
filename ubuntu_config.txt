@@ -24,3 +24,13 @@ ssh秘钥认证比基于密码认证更安全，
 ssh-keygen -t rsa
 ssh-copy-id username@ip地址
 输入密码，将公钥添加到服务器的授权秘钥列表中，现在可以使用秘钥直接ssh登录，无需密码。
+
+
+// 安装appimage
+1. 下载appimage安装包
+2. 修改文件为可执行的a+x
+3. need to install Fuse: https://github.com/AppImage/AppImageKit/wiki/FUSE
+sudo add-apt-repository universe
+sudo apt install libfuse2t64
+如果不想安装上面的fuse，可以直接在后面加上命令：--appimage-extract
+具体原因可以查看上述链接网站
