@@ -1,0 +1,26 @@
+sudo apt update
+sudo apt upgrade
+
+// 配置github
+sudo apt-get install git
+
+// 配置ssh
+sudo apt-get install openssh-server
+// 启动ssh服务器
+安装完成后，ssh服务器将自动启动，可以使用一下命令检查ssh服务器的运行状态
+sudo systemctl status ssh
+
+// 连接到ssh服务器
+ssh username@ip地址 后面似乎可以加上-p 密码
+
+一般情况下，ssh服务器默认使用端口22，可以修改为其他接口，编辑ssh配置文件：
+sudo vim /etc/ssh/sshd_config
+Port 2222
+保存并退出文件，然后重新加载ssh服务
+sudo systemctl reload ssh
+
+// ssh秘钥认证
+ssh秘钥认证比基于密码认证更安全，
+ssh-keygen -t rsa
+ssh-copy-id username@ip地址
+输入密码，将公钥添加到服务器的授权秘钥列表中，现在可以使用秘钥直接ssh登录，无需密码。
