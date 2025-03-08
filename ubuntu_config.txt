@@ -34,3 +34,40 @@ sudo add-apt-repository universe
 sudo apt install libfuse2t64
 如果不想安装上面的fuse，可以直接在后面加上命令：--appimage-extract
 具体原因可以查看上述链接网站
+
+
+// 安装nerd font
+https://www.nerdfonts.com/font-downloads
+sudo unzip Mononoki.zip -d /usr/share/fonts/Mononoki
+cd Mononoki
+sudo mkfontscale
+sudo mkfontdir
+sudo fc-cache -fv
+
+// 安装vim
+安装gcc或者clang
+https://github.com/llvm/llvm-project/releases/tag/llvmorg-19.1.7
+官网下载llvm+clang
+sudo tar xvf clang+.tar.xz
+sudo mv clang /usr/lib/llvm-19 这里是因为ubuntu安装llvm默认路径是在/usr/lib路径下的，如果是19的版本会在下面创建一个文件夹llvm-19
+然后将必要文件符号链接到/usr/bin 和 /usr/lib以及其他目录
+sudo ln -s /usr/lib/llvm-19/bin/clang /usr/bin/clang -f
+sudo ln -s /usr/lib/llvm-19/clang++ /usr/bin/clang++ -f
+如果要使用libc++库，需要将路径/usr/lib/llvm-19/lib/x86-64-unknown-linux-gnu添加到ldconfig中
+在/etc/ld.so.conf.d/中新建一个libcpp.conf文件，内容为：/usr/lib/llvm-19/lib/x86-64-unknown-linux-gnu
+然后执行sudo ldconfig即可。
+
+安装gcc
+sudo apt install build-essential
+如果想要安装更新的，那么
+1. 添加ubuntu toolchain ppa: sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+2. sudo apt update 更新系统的包列表
+3. 安装最新的gcc版本即可 sudo apt install gcc-13 g++-13 gdb
+设置默认的gcc版本：sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 60
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-13 60
+
+
+// 安装vim
+sudo apt install neovim
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+rm -rf ~/.config/nvim/.git
