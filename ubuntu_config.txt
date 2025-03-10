@@ -71,3 +71,13 @@ sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-13 60
 sudo apt install neovim
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 rm -rf ~/.config/nvim/.git
+
+// 安装typora
+# or run:
+# sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE
+wget -qO - https://typora.io/linux/public-key.asc | sudo tee /etc/apt/trusted.gpg.d/typora.asc
+# add Typora's repository
+sudo add-apt-repository 'deb https://typora.io/linux ./'
+sudo apt update
+# install typora
+sudo apt install typora
